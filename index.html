@@ -401,19 +401,22 @@
 							<p style="text-align:justify; text-justify:inter-ideograph;">
                 </p><h4 class="title is-5">Contributions</h4>
 							<b>1: </b>
-							We consider the problem of FSIG with Transfer Learning using very limited target samples (e.g., 10-shot). <br>
+              We conduct a study to reveal that even highly-accurate SA classifiers could still incur significant
+              fairness measurement errors when using existing framework.
+              <br>
 							<b>2: </b>
-							Our work makes two contributions:
-							<ul>
-								<li>We discover that when the close proximity assumption between source-target domain is relaxed, SOTA FSIG methods, e.g., EWC (Li et al.), CDC (Ojha et al.), DCL (Zhao et al.),
-                  which consider only source domain/source task in knowledge preserving perform no better than a baseline fine-tuning method, e.g., TGAN, (Wang et al.).</li>
-								<li>We propose a novel adaptation-aware kernel modulation for FSIG that achieves SOTA performance across source / target domains with different proximity. </li>
-							</ul>
-							<b>3: </b>
-							Schematic diagram of our proposed Importance Probing Mechanism:
-              We measure the importance of each kernel for the target domain after probing and preserve source domain knowledge that is important for target domain adaptation.
-              The same operations are applied to discriminator.
-						</td>
+              To enable evaluation of fairness measurement frameworks, we propose new datasets based on
+              generated samples from StyleGAN, StyleSwin and SDM, with manual labeling w.r.t. SA
+              <br>
+              <b>3: </b>
+              We propose a new and accurate fairness measurement framework, CLEAM, that accounts for SA
+              classifier inaccuracies and provides point and interval estimates
+              <br>
+              <b>4: </b>
+              Using CLEAM, we reveal considerable biases in several important generative models, prompting
+              careful consideration when applying them for different applications.
+              <br>
+          	</td>
 					</tr>
 				</tbody></table>
 				<table align="center" width="880px">
