@@ -251,23 +251,25 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recently, there has been increased interest in fair generative models. In this work,
-            we conduct, for the first time, an in-depth study on fairness measurement, a
-            critical component in gauging progress on fair generative models. We make three
-            main contributions. First, we conduct a study that reveals that contrary to prior
-            work’s assumption the existing fairness measurement framework has considerable
-            measurement errors, even when highly accurate sensitive attribute (SA) classifiers
-            are used. For example, a ResNet-18 for Gender with accuracy ≈ 97% could still
-            result in an measurement error of 4.98%. This oversight raises concerns about the
-            accuracy reported in previous works, where relative fairness improvement falls
-            within these error margins. Second, to address this issue, we propose CLassifier
-            Error-Aware Measurement (CLEAM), a new framework which uses a statisti-
-            cal model to account for inaccuracies in SA classifiers. Our proposed CLEAM
-            reduces measurement errors significantly, e.g., 4.98%→0.62% for StyleGAN2
-            w.r.t. Gender. CLEAM achieves this with minimal additional overhead. Third,
-            we utilize CLEAM to measure fairness in important text-to-image generator and
-            GANs, revealing considerable biases in these models that raise concerns about
-            their applications. Code and reproducibility instructions are included in Supp.
+            Recently, prompt learning has emerged as the state-of-the-art (SOTA) for fair text-
+            to-image (T2I) generation. Specifically, this approach leverages readily available
+            reference images to learn inclusive prompts for each target Sensitive Attribute (tSA),
+            allowing for fair image generation. In this work, we first reveal that this prompt
+            learning-based approach results in degraded sample quality. Our analysis shows that
+            the approach’s training objective–which aims to align the embedding differences of
+            learned prompts and reference images–could be sub-optimal, resulting in distortion
+            of the learned prompts and degraded generated images.
+            To further substantiate this claim, as our major contribution, we deep dive into
+            the denoising subnetwork of the T2I model to track down the effect of these learned
+            prompts by analyzing the cross-attention maps. In our analysis, we propose novel
+            prompt switching analysis: I2H and H2I. Furthermore, we propose new quantitative
+            characterization of cross-attention maps. Our analysis reveals abnormalities in
+            the early denoising steps, perpetuating improper global structure that results in
+            degradation in the generated samples. Building on insights from our analysis, we
+            propose two ideas: (i) Prompt Queuing and (ii) Attention Amplification to address
+            the quality issue. Extensive experimental results on a wide range of tSAs show
+            that our proposed method outperforms SOTA approach’s image generation quality,
+            while achieving competitive fairness.
           </p>
         </div>
       </div>
@@ -402,6 +404,7 @@
 						<td>
 							<p style="text-align:justify; text-justify:inter-ideograph;">
                 </p><h4 class="title is-5">Contributions</h4>
+                <!--
 							<b>1: </b>
               We conduct a study to reveal that even highly-accurate SA classifiers could still incur significant
               fairness measurement errors when using existing framework.
@@ -418,6 +421,7 @@
               Using CLEAM, we reveal considerable biases in several important generative models, prompting
               careful consideration when applying them for different applications.
               <br>
+            -->
           	</td>
 					</tr>
 				</tbody></table>
@@ -439,69 +443,6 @@
   </div>
 
 
-  <!-- Dataset -->
-
-<div class="columns is-centered">
-  <div class="column is-full-width">
-    <h2 class="title is-3">GenData Dataset</h2>
-    <p>
-    In our work, we present a new dataset based on generated samples from State-of-the-Art Generative models: StyleGAN2,StyleSwin and Diffusion models.
-    In this dataset we provide labels for each samples w.r.t. Gender and BlackHair collecting utilizing Amazon MTurk.
-    More specifically, our dataset contains ≈9k randomly generated samples based on the original saved weights and codes of the respective GANs, and ≈2k
-    samples for four different prompts inputted in the SDM. These samples are then hand labeled w.r.t. the
-    sensitive attributes. Then with these labeled datasets, we can approximate the ground-truth sensitive attribute
-    distribution, p∗, of the respective GANs.
-   </p>
-
-    <div class="content has-text-justified">
-  <center>
-    <!--Gender-->
-    <table align="center" width="660px">
-      <tbody><tr>
-        <td width="260px">
-          <center>
-            <img class="round" style="width:330px" src="./resources/Gender0_Samples_StyleGAN2.png">
-            <img class="round" style="width:330px" src="./resources/Gender1_Samples_StyleGAN2.png">
-          </center>
-          <h3 class="subtitle has-text-centered" style="font-size:100%";>
-              Figure 1: Examples of generated samples in GenDataw.r.t Gender i.e., LHS: Female samples and RHS: Male samples.
-          </h3>
-        </td>
-      </tr>
-    </tbody></table>
-    <!--Blackhair-->
-    <table align="center" width="660px">
-      <tbody><tr>
-        <td width="260px">
-          <center>
-            <img class="round" style="width:330px" src="./resources/Blackhair0_Samples_StyleGAN2.png">
-            <img class="round" style="width:330px" src="./resources/Blackhair1_Samples_StyleGAN2.png">
-          </center>
-          <h3 class="subtitle has-text-centered" style="font-size:100%";>
-              Figure 2: Examples of generated samples in GenData w.r.t BlackHair i.e., LHS: No-BlackHair samples and RHS: BlackHair samples.
-          </h3>
-        </td>
-      </tr>
-    </tbody></table>
-    <!--Rejected-->
-    <table align="center" width="660px">
-      <tbody><tr>
-        <td width="260px">
-          <center>
-            <img class="round" style="width:330px" src="./resources/rejected_Samples_StyleGAN2.png">
-            <img class="round" style="width:330px" src="./resources/rejected_Samples_StyleSwin.png">
-          </center>
-          <h3 class="subtitle has-text-centered" style="font-size:100%";>
-              Figure 3: Examples of rejected generated samples in GenData i.e., LHS: StyleGAN2 samples and RHS: StyleSwin samples.
-          </h3>
-        </td>
-      </tr>
-    </tbody></table>
-
-  </center>
-    </div>
-  </div>
-</div>
 
 
 
