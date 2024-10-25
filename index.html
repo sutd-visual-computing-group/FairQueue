@@ -397,6 +397,13 @@
 						<td>
 							<p style="text-align:justify; text-justify:inter-ideograph;">
                 </p><h4 class="title is-5">Contributions</h4>
+		We examine SOTA prompt learning methods that utilize directional alignment between prompt embeddings and reference image embeddings in fair T2I generation. Our study reveals two key issues:
+		<ul>
+			<li>The generation of a moderate number of samples with degraded quality.</li>
+			<li>The potential for noisy reference image embeddings, as they may capture unrelated concepts beyond the target Sensitive Attribute (tSA), resulting in sub-optimal learning.</li>
+		</ul>
+		To address this, we propose a novel analysis framework (H2I/I2H) that scrutinizes the cross-attention maps during the denoising process of T2I generation. The analysis highlights abnormalities in the learned prompts, particularly in the early denoising steps. Based on these insights, we introduce FairQueue, an improved method that addresses quality issues while maintaining competitive fairness.
+
                 <!--
 							<b>1: </b>
               We conduct a study to reveal that even highly-accurate SA classifiers could still incur significant
